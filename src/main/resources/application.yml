@@ -1,0 +1,66 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: pulseguard
+
+  # ---------------------------------------------------------------------------
+  # DEFAULT: in-memory H2 database. The app runs with ZERO setup — just Run it.
+  # To use PostgreSQL instead, activate the "postgres" profile
+  # (see application-postgres.yml) — e.g. -Dspring.profiles.active=postgres
+  # ---------------------------------------------------------------------------
+  datasource:
+    url: jdbc:h2:mem:pulseguard;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# Application-specific configuration
+pulseguard:
+  security:
+    # Base64-encoded 256-bit secret. OVERRIDE THIS IN PRODUCTION via the JWT_SECRET env var.
+    jwt-secret: ${JWT_SECRET:c2VjdXJlLWRldi1vbmx5LXNlY3JldC1jaGFuZ2UtbWUtaW4tcHJvZHVjdGlvbg==}
+    jwt-expiration-ms: ${JWT_EXPIRATION_MS:3600000} # 1 hour
+  scheduler:
+    # How often the background job pings all enabled monitors (milliseconds)
+    interval-ms: ${CHECK_INTERVAL_MS:60000} # 1 minute
+    # Per-request timeout when calling a monitored URL (milliseconds)
+    request-timeout-ms: ${CHECK_TIMEOUT_MS:10000}
+  alerts:
+    # Optional webhook URL to notify when a monitor goes DOWN or recovers.
+    # Works with Slack/Discord incoming webhooks or any endpoint (e.g. https://webhook.site).
+    # Leave blank to just log alerts to the console.
+    webhook-url: ${ALERT_WEBHOOK_URL:}
+    # Also send a notification when a monitor recovers (DOWN -> UP).
+    notify-on-recovery: ${ALERT_ON_RECOVERY:true}
+
+# Expose health + metrics; keep the surface small in production
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.pulseguard: INFO

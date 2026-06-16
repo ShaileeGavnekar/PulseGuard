@@ -1,0 +1,11 @@
+# Activate with: -Dspring.profiles.active=postgres   (or SPRING_PROFILES_ACTIVE=postgres)
+# Requires a running PostgreSQL — start one with:  docker compose up -d db
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/pulseguard}
+    username: ${DB_USERNAME:pulseguard}
+    password: ${DB_PASSWORD:pulseguard}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
