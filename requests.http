@@ -1,0 +1,45 @@
+### PulseGuard — sample requests (use with the IntelliJ/VS Code REST client)
+@host = http://localhost:8080
+
+### 1. Register (returns a JWT)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "demo@pulseguard.dev",
+  "password": "password123",
+  "displayName": "Demo User"
+}
+
+### 2. Login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "demo@pulseguard.dev",
+  "password": "password123"
+}
+
+> {% client.global.set("token", response.body.token); %}
+
+### 3. Create a monitor
+POST {{host}}/api/monitors
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Example homepage",
+  "url": "https://example.com"
+}
+
+### 4. List my monitors
+GET {{host}}/api/monitors
+Authorization: Bearer {{token}}
+
+### 5. Uptime stats for monitor 1
+GET {{host}}/api/monitors/1/stats
+Authorization: Bearer {{token}}
+
+### 6. Recent check history for monitor 1
+GET {{host}}/api/monitors/1/checks
+Authorization: Bearer {{token}}
