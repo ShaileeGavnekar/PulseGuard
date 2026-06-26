@@ -45,6 +45,7 @@ public class DataSeeder {
                     .build());
 
             List<String[]> seeds = List.of(
+                    new String[]{"Flaky Service", "https://httpstat.us/random/200,503"},
                     new String[]{"Google", "https://www.google.com"},
                     new String[]{"GitHub", "https://github.com"},
                     new String[]{"Example.com", "https://example.com"},
