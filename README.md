@@ -8,7 +8,8 @@ Built to demonstrate solid backend fundamentals: clean layered architecture, JWT
 REST, JPA persistence, scheduled jobs, resilient outbound HTTP, validation, consistent
 error handling, OpenAPI docs, tests, and Docker.
 
-![PulseGuard dashboard](docs/dashboard.png)
+<img width="2920" height="1750" alt="image" src="https://github.com/user-attachments/assets/4aa90185-7340-4df8-9e3f-6b888ae60868" />
+
 
 > Save a screenshot of the running dashboard (http://localhost:8081/dashboard.html) to
 > `docs/dashboard.png` and this image will render on GitHub.
