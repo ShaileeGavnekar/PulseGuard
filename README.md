@@ -167,15 +167,3 @@ ALERT_WEBHOOK_URL=https://hooks.slack.com/services/XXX/YYY/ZZZ mvn spring-boot:r
 Delivery failures are caught and logged so a broken webhook never disrupts the check sweep.
 
 ---
-
-## Ideas to extend (good talking points / next commits)
-
-- Configurable per-monitor check interval and expected status code.
-- Refresh tokens + token revocation.
-- Migrate schema management to Flyway/Liquibase.
-- Add Testcontainers for PostgreSQL integration tests.
-- A small React/Thymeleaf dashboard with an uptime chart.
-
----
-
-*Built as a portfolio project to demonstrate production-minded Spring Boot fundamentals.*
