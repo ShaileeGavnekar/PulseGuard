@@ -8,7 +8,7 @@ Built to demonstrate solid backend fundamentals: clean layered architecture, JWT
 REST, JPA persistence, scheduled jobs, resilient outbound HTTP, validation, consistent
 error handling, OpenAPI docs, tests, and Docker.
 
-<img width="2920" height="1750" alt="image" src="https://github.com/user-attachments/assets/4aa90185-7340-4df8-9e3f-6b888ae60868" />
+![Uploading image.png…]()
 
 
 
