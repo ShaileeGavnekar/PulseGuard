@@ -15,15 +15,6 @@ error handling, OpenAPI docs, tests, and Docker.
 
 ---
 
-## Why this project
-
-Most beginner portfolios are another to-do app or e-commerce clone. PulseGuard is a small
-but *real* service: it does background work, talks to the outside world, handles failure
-gracefully, and is multi-tenant (every user only sees their own monitors). That gives you
-concrete things to talk about in an interview beyond plain CRUD.
-
----
-
 ## Tech stack
 
 | Area | Choice |
